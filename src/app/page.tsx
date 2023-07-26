@@ -2,6 +2,7 @@
 
 import Logo from '../../public/no-bar-logo.png'
 import BackgroundOne from '../../public/background-one.jpg'
+import BackgroundBar from '../../public/background-bar.png'
 
 import {NavigationBar, Parallax} from "@/components";
 import {motion, useScroll, useTransform} from "framer-motion";
@@ -13,7 +14,7 @@ export default function Home() {
   const bgRange = useTransform(scrollY, [400, 700], ['#faf9f5', '#643A6B'])
 
   return (
-    <motion.main style={{backgroundColor: bgRange}} className={`w-full min-h-[200vh] h-[max-content]`}>
+    <motion.main style={{backgroundColor: bgRange}} className={`w-full min-h-[200vh] overflow-hidden h-[max-content]`}>
       <Parallax className="absolute mt-[50px] w-full h-[125]" offset={100}>
         <NavigationBar/>
       </Parallax>
@@ -68,6 +69,15 @@ export default function Home() {
         </div>
 
       </section>
+
+      <section className="relative flex h-[100vh] z-[3]">
+        <Parallax offset={100} className="flex-[2] relative" style={{ background: `url(${BackgroundBar.src})` }}>
+          <Parallax direction="vertical" offset={200} className="absolute font-bold text-[200px] top-[30%] right-[-10%]">NO BAR</Parallax>
+        </Parallax>
+        <Parallax offset={100} className="z-[1] flex-[1] p-12 text-black bg-white">
+          <p>Test</p>
+        </Parallax>
+      </section>
     </motion.main>
   )
 }
@@ -120,13 +130,4 @@ const TriangleThree = styled.div`
   border-width: 0 0 1000px 1100px;
   border-color: transparent transparent #5F264A transparent;
   transform: rotate(30deg);
-`
-
-const TriangleFour = styled.div`
-  width: 0px;
-  height: 0px;
-  border-style: solid;
-  border-width: 0 0 600px 500px;
-  border-color: transparent transparent #5F264A transparent;
-  transform: rotate(140deg);
 `
